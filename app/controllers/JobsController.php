@@ -20,16 +20,7 @@ class JobsController extends \BaseController {
 	 */
 	public function create()
 	{
-		$input = Input::all();
-		$job = new Job;
-		$fields = ['company_id', 'category_id', 'rank', 'department', 'vessel', 'slots', 'vessel_flag', 'post_start', 'post_end', 'trade_route', 'description'];
-		foreach($fields as $field) {
-			$job->$field = array_get($input, $field);
-		}
-		$job->save();
-		return [
-			'success' => true
-		];
+		
 	}
 
 
@@ -40,7 +31,16 @@ class JobsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+		$job = new Job;
+		$fields = ['company_id', 'category_id', 'rank', 'department', 'vessel', 'slots', 'vessel_flag', 'post_start', 'post_end', 'trade_route', 'description'];
+		foreach($fields as $field) {
+			$job->$field = array_get($input, $field);
+		}
+		$job->save();
+		return [
+			'success' => true
+		];
 	}
 
 
@@ -89,7 +89,11 @@ class JobsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$job = Job::find($id);
+		$job->delete();
+		return [
+			'success' => true
+		];
 	}
 
 
