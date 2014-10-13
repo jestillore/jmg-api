@@ -1,6 +1,6 @@
 <?php
 
-class JobsController extends \BaseController {
+class DepartmentsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,11 +9,7 @@ class JobsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$category = Input::get('category');
-		if($category) {
-			return Job::where('category', $category)->get();
-		}
-		return Job::all();
+		return Department::all();
 	}
 
 
@@ -24,7 +20,7 @@ class JobsController extends \BaseController {
 	 */
 	public function create()
 	{
-		
+		//
 	}
 
 
@@ -35,14 +31,7 @@ class JobsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::all();
-		$job = new Job;
-		$fields = ['company_id', 'category', 'rank_id', 'department_id', 'vessel_id', 'slots', 'vessel_flag_id', 'post_start', 'post_end', 'trade_route_id', 'description'];
-		foreach($fields as $field) {
-			$job->$field = array_get($input, $field);
-		}
-		$job->save();
-		return $job;
+		//
 	}
 
 
@@ -54,8 +43,7 @@ class JobsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$job = Job::find($id);
-		return $job;
+		//
 	}
 
 
@@ -91,11 +79,7 @@ class JobsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$job = Job::find($id);
-		$job->delete();
-		return [
-			'success' => true
-		];
+		//
 	}
 
 

@@ -6,7 +6,9 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"laravelbook/ardent": "2.*",
-		"lucadegasperi/oauth2-server-laravel": "1.0.x"
+		"lucadegasperi/oauth2-server-laravel": "1.0.x",
+		"zizaco/confide": "~4.0@dev",
+		"zizaco/entrust": "1.2.*@dev"
 	},
 	"autoload": {
 		"classmap": [

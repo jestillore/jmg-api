@@ -45,9 +45,7 @@ class CompanyController extends \BaseController {
 		$contactPerson->save();
 		$company->contact_person_id = $contactPerson->id;
 		$company->save();
-		return [
-			'success' => true
-		];
+		return $company;
 
 	}
 
@@ -97,9 +95,7 @@ class CompanyController extends \BaseController {
 		}
 		$company->contact_person->save();
 		$company->save();
-		return [
-			'success' => true
-		];
+		return $company;
 	}
 
 

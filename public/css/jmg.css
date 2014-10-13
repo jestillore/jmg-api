@@ -1,0 +1,88 @@
+
+#banner {
+	background-image: url('../img/header-bg.png');
+	background-size: cover;
+}
+
+#banner img {
+	margin: 70px 0 35px 0;
+}
+
+#main-nav {
+	margin-bottom: 0px;
+	background-color: #08436f;
+}
+
+#main-nav .navbar-collapse {
+	padding: 15px;
+}
+
+.navbar-nav.navbar-right:last-child {
+	margin: 0px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	background: none;
+	color: #20caed;
+}
+
+#main-content {
+	padding: 25px; 
+}
+
+#sidebar .gencon {
+	text-align: justify;;
+	border: 1px solid #aca000;
+	padding: 10px;
+	padding-right: 30px;
+	background-color: #fef6df;
+}
+
+#sidebar .gencon h4 {
+	padding-left: 15px;
+}
+
+.btn {
+	padding: 10px 30px;
+}
+
+.nav-tabs.nav-justified a {
+	color: #9c9c9c;
+}
+
+.nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus {
+	background-color: #08436f;
+	color: #fff;
+}
+
+.similar-job-item {
+	padding: 20px 0;
+	border-top: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.job-category-dot {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.urgent {
+	color: #ef4456;
+}
+
+.deployment {
+	color: #ffc501;
+}
+
+.pooling {
+	color: #4fbc21;
+}
+
+.all {
+	color: #1fb635
+}
+
+.middot-tabs {
+	font-size: 15px;
+	font-weight: bold;
+}

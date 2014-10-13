@@ -1,0 +1,174 @@
+<img src="img/company-logo.png" class="pull-right" />
+<h4 class="text-primary"><b>{[job.rank.name]}</b></h4>
+<span class="label label-danger">{[job.category]}</span><br /><br />
+<p>{[job.description]}</p><br />
+<h4>Job Information</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Post no.
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.id]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Quantity
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.slots]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Department
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.department.name]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Vessel
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.vessel.name]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Vessel Flag
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.vessel_flag.name]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Trade Route
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.trade_route.name]}</span>
+	</div>
+</div>
+<br />
+<h4>Company Information</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Company Name
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.name]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Address
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.address]}</span>
+	</div>
+</div>
+<!-- <div class="row">
+	<div class="col-md-4 col-lg-4">
+		City
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">Paranaque</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Country
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">Philippines</span>
+	</div>
+</div> -->
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		POEA License Number
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.poea]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Validity of License
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.validity]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Telephone No.
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.telephone]}</span>
+	</div>
+</div>
+<!-- <div class="row">
+	<div class="col-md-4 col-lg-4">
+		Mobile No.
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">0920-9465339</span>
+	</div>
+</div> -->
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Website
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.website]}</span>
+	</div>
+</div>
+<br />
+<h4>Contact Person</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Name
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.contact_person.firstname]} {[job.company.contact_person.lastname]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Designation
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.contact_person.designation]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Contact No.
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.contact_person.telephone]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Fax No.
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.contact_person.fax]}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 col-lg-4">
+		Email Address
+	</div>
+	<div class="col-md-8 col-lg-8">
+		<span class="text-muted">{[job.company.contact_person.email]}</span>
+	</div>
+</div>
+<br /><br />
+<a class="btn btn-danger" ui-sref="jobs.all">GO BACK</a>

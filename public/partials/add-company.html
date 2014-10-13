@@ -1,0 +1,121 @@
+<h4 class="text-primary"><b>Company Registration</b></h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<br />
+<form role="form" ng-submit="addCompany()">
+    </div>
+	<!-- <div class="row">
+		<div class="text-center">
+			<a href="#"><img src="img/upload-logo.png" /></a>
+		</div>
+		<br />
+	</div> -->
+	<div class="row">
+	 	<div class="col-md-12 col-lg-12">
+            <div class="form-group">
+            	<input ng-model="name" class="form-control" placeholder="Company Name" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+        	<div class="form-group">
+        		<input ng-model="poea" class="form-control" placeholder="POEA License No." />
+        	</div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+        	<div class="input-group">
+                <span class="input-group-addon">Validity</span>
+                <div class="col-md-4 col-lg-4" style="padding: 0;">
+                	<select ng-model="validityM" class="form-control">
+                    	<option value="">m</option>
+                        <option ng-repeat="month in months" value="{[$index + 1]}">{[month]}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 col-lg-4" style="padding: 0;">
+                	<select ng-model="validityD" class="form-control">
+                    	<option value="">d</option>
+                        <option ng-repeat="date in dates" value="{[date]}">{[date]}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 col-lg-4" style="padding: 0;">
+                	<select ng-model="validityY" class="form-control">
+                    	<option value="">y</option>
+                    	<option ng-repeat="year in years" value="{[year]}">{[year]}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+	 	<div class="col-md-12 col-lg-12">
+            <div class="form-group">
+            	<input ng-model="address" class="form-control" placeholder="Address" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+        	<div class="form-group">
+        		<input ng-model="telephone" class="form-control" placeholder="Telephone No." />
+        	</div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+        	<div class="form-group">
+        		<input ng-model="fax" class="form-control" placeholder="Fax No." />
+        	</div>
+        </div>
+    </div>
+    <div class="row">
+	 	<div class="col-md-12 col-lg-12">
+            <div class="form-group">
+            	<input ng-model="website" class="form-control" placeholder="Website" />
+            </div>
+        </div>
+    </div>
+    <h4><strong>Contact Person</strong></h4>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+        	<div class="form-group">
+        		<input ng-model="contactFirstname" class="form-control" placeholder="Firstname" />
+        	</div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+        	<div class="form-group">
+        		<input ng-model="contactLastname" class="form-control" placeholder="Lastname" />
+        	</div>
+        </div>
+    </div>
+    <div class="row">
+	 	<div class="col-md-12 col-lg-12">
+            <div class="form-group">
+            	<input ng-model="contactDesignation" class="form-control" placeholder="Designation" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+	 	<div class="col-md-12 col-lg-12">
+            <div class="form-group">
+            	<input ng-model="contactEmail" class="form-control" placeholder="Email Address" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+        	<div class="form-group">
+        		<input ng-model="contactTelephone" class="form-control" placeholder="Telephone No." />
+        	</div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+        	<div class="form-group">
+        		<input ng-model="contactFax" class="form-control" placeholder="Fax No." />
+        	</div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+    	<div class="col-md-12 col-lg-12">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        	<input class="btn btn-danger" type="submit" value="ADD COMPANY" />
+        </div>
+    </div>
+</form>

@@ -124,7 +124,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
-
+		'Zizaco\Confide\ServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
 	),
 
 	/*
@@ -193,7 +194,8 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'AuthorizationServer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizationServerFacade',
 		'ResourceServer' => 'LucaDegasperi\OAuth2Server\Facades\ResourceServerFacade',
-
+		'Confide'    => 'Zizaco\Confide\Facade',
+		'Entrust'    => 'Zizaco\Entrust\EntrustFacade',
 	),
 
 );
