@@ -31,12 +31,12 @@ Route::post('oauth/access_token', function() {
     return AuthorizationServer::performAccessTokenFlow();
 });
 
-Route::group(['before' => 'oauth', 'prefix' => 'api'], function () {
+//Route::group(['before' => 'oauth', 'prefix' => 'api'], function () {
 
 	Route::resource('company', 'CompanyController');
 	Route::resource('jobs', 'JobsController');
 
-});
+//});
 
 Route::group(['before' => 'auth'], function () {
 
@@ -44,8 +44,8 @@ Route::group(['before' => 'auth'], function () {
 	Route::resource('vessels', 'VesselsController');
 	Route::resource('departments', 'DepartmentsController');
 
-	Route::resource('company', 'CompanyController');
-	Route::resource('jobs', 'JobsController');
+	// Route::resource('company', 'CompanyController');
+	// Route::resource('jobs', 'JobsController');
 
 	Route::resource('vessel-flags', 'VesselFlagsController');
 	Route::resource('trade-routes', 'TradeRoutesController');
