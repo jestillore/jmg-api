@@ -9,11 +9,20 @@ class JobsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$category = Input::get('category');
-		if($category) {
-			return Job::where('category', $category)->get();
+		if(Auth::user()->hasRole('Company Owner')) {
+			$category = Input::get('category');
+			if($category) {
+				return Job::where('category', $category)->where('company_id', Auth::user()->company->id)->get();
+			}
+			return Job::where('company_id', Auth::user()->company->id)->get();
 		}
-		return Job::all();
+		else {
+			$category = Input::get('category');
+			if($category) {
+				return Job::where('category', $category)->get();
+			}
+			return Job::all();
+		}
 	}
 
 

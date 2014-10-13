@@ -202,7 +202,7 @@ jmg.controller('JobsController', ['$scope', '$state', '$stateParams', 'Ranks', '
 
 	$scope.addJob = function () {
 		var job = new Jobs({
-			company_id: $scope.company,
+			company_id: $scope.companyOwner() ? $scope.user.company.id : $scope.company,
 			category: $scope.category,
 			rank_id: $scope.rank,
 			department_id: $scope.department,

@@ -55,6 +55,7 @@ Route::group(['before' => 'auth'], function () {
 	});
 
 	Route::get('user', function () {
+		Auth::user()->company; // change better implementation if found
 		return Auth::user();
 	});
 
