@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-md-8 col-lg-8">
 	<div>
-		<a ui-sref="addcompany" class="btn btn-info">Add Company</a>
+		<a ui-sref="addcompany" ng-show="superUser()" class="btn btn-info">Add Company</a>
 		<a ui-sref="addjob" class="btn btn-primary">Add Job</a>
 	</div>
 	<div ui-view></div>

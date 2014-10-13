@@ -18,14 +18,18 @@ jmg.config(['$stateProvider', '$urlRouterProvider', '$interpolateProvider', '$re
 				id: $stateParams.id
 			});
 		}]
+	}).state('company', {
+		url: '/company/:id',
+		templateUrl: 'partials/company.html',
+		controller: ['$scope', '$stateParams', 'Companies', function ($scope, $stateParams, Companies) {
+			$scope.company = Companies.get({
+				id: $stateParams.id
+			});
+		}]
 	}).state('addjob', {
 		url: '/add-job/:companyId',
 		templateUrl: 'partials/add-job.html',
 		controller: 'JobsController'
-	}).state('company', {
-		url: '/company/:id',
-		templateUrl: 'partials/add-company-done.html',
-		controller: 'CompanyController'
 	}).state('jobs', {
 		url: '/jobs',
 		templateUrl: 'partials/jobs.html'
@@ -108,6 +112,9 @@ jmg.factory('Jobs', ['$resource', function ($resource) {
 			}
 		}
 	});
+}]);
+jmg.factory('User', ['$resource', function ($resource) {
+	return $resource(baseUrl('/user'));
 }]);
 jmg.factory('VesselFlags', ['$resource', function ($resource) {
 	return $resource(baseUrl('/vessel-flags/:id'));
@@ -212,5 +219,14 @@ jmg.controller('JobsController', ['$scope', '$state', '$stateParams', 'Ranks', '
 				id: job.id
 			});
 		});
+	};
+}]);
+jmg.controller('UserController', ['$scope', 'User', function ($scope, User) {
+	$scope.user = User.get({});
+	$scope.superUser = function () {
+		return $scope.user.role == 1;
+	};
+	$scope.companyOwner = function () {
+		return $scope.user.role == 2;
 	};
 }]);

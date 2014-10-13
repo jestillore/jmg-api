@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{{URL::to('css/jmg.css');}}" />
 	@yield('css')
 </head>
-<body>
+<body ng-controller="UserController">
 	<div id="banner" class="text-centered">
 		<div class="container">
 			<div class="row text-center">
@@ -25,11 +25,11 @@
 		        </div>
 	        	<div class="navbar-collapse collapse">
 		          	<ul class="nav navbar-nav navbar-left">
-		            	<li @if($active == 'home') class="active" @endif><a href="{{URL::to('/')}}">HOME</a></li>
-		            	<li @if($active == 'about') class="active" @endif><a href="{{URL::to('about')}}">ABOUT US</a></li>
+		            	<!-- <li @if($active == 'home') class="active" @endif><a href="{{URL::to('/')}}">HOME</a></li>
+		            	<li @if($active == 'about') class="active" @endif><a href="{{URL::to('about')}}">ABOUT US</a></li> -->
 		            	<li @if($active == 'job-posting') class="active" @endif><a href="{{URL::to('job-posting')}}">JOB POSTING</a></li>
-		            	<li @if($active == 'q-and-a') class="active" @endif><a href="{{URL::to('q-and-a')}}">Q &amp; A</a></li>
-		            	<li @if($active == 'contact') class="active" @endif><a href="{{URL::to('contact')}}">CONTACT US</a></li>
+		            	<!-- <li @if($active == 'q-and-a') class="active" @endif><a href="{{URL::to('q-and-a')}}">Q &amp; A</a></li>
+		            	<li @if($active == 'contact') class="active" @endif><a href="{{URL::to('contact')}}">CONTACT US</a></li> -->
 		          	</ul>
 		          	<ul class="nav navbar-nav navbar-right">
 		            	<li>

@@ -38,13 +38,22 @@ class CompanyController extends \BaseController {
 		foreach($companyFields as $field) {
 			$company->$field = array_get($input, $field);
 		}
-		$contactPerson = new ContactPerson;
+		$contactPerson = new User;
 		foreach($personFields as $field) {
 			$contactPerson->$field = array_get($input, 'cp_' . $field);
 		}
+		$password = str_random(10);
+		$contactPerson->password = Hash::make($password);
+		$companyOwner = Role::where('name', 'Company Owner')->firstOrFail();
+		$contactPerson->role = $companyOwner->id;
+		$contactPerson->confirmation_code = str_random(30);
 		$contactPerson->save();
+		$contactPerson->attachRole($companyOwner);
 		$company->contact_person_id = $contactPerson->id;
 		$company->save();
+		Mail::queue('emails.register', ['name' => $contactPerson->firstname, 'email' => $contactPerson->email, 'password' => $password, 'confirmationCode' => $contactPerson->confirmation_code], function ($message) {
+			$message->to(Input::get('cp_email'), Input::get('cp_firstname') . ' ' . Input::get('cp_lastname'))->subject('JMG Account');
+		});
 		return $company;
 
 	}

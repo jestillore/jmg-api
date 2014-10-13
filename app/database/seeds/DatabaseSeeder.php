@@ -11,25 +11,35 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		$this->call('CategoriesSeeder');
+		$this->call('RPSeeder');
 	}
 
 }
 
-class CategoriesSeeder extends Seeder {
+class RPSeeder extends Seeder {
 
 	public function run() {
-		$urgent = new Category;
-		$urgent->name = 'Urgent';
-		$urgent->save();
+		$superUser = new Role;
+		$superUser->name = 'Super User';
+		$superUser->save();
 
-		$deployment = new Category;
-		$deployment->name = 'Deployment';
-		$deployment->save();
+		$companyOwner = new Role;
+		$companyOwner->name = 'Company Owner';
+		$companyOwner->save();
 
-		$pooling = new Category;
-		$pooling->name = 'Pooling';
-		$pooling->save();
+		$manageCompanies = new Permission;
+		$manageCompanies->name = 'manage_companies';
+		$manageCompanies->display_name = 'Manage Companies';
+		$manageCompanies->save();
+
+		$manageJobs = new Permission;
+		$manageJobs->name = 'manage_jobs';
+		$manageJobs->display_name = 'Manage Jobs';
+		$manageJobs->save();
+
+		$superUser->perms()->sync([$manageCompanies->id, $manageJobs->id]);
+		$companyOwner->perms()->sync([$manageJobs->id]);
+
 	}
 
 }
