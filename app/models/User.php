@@ -23,7 +23,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $hidden = array('password', 'remember_token');
+	protected $hidden = array('password', 'remember_token', 'created_at', 'updated_at');
 
 	public function company() {
 		return $this->hasOne('Company', 'contact_person_id');

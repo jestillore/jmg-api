@@ -4,6 +4,8 @@ class Company extends BaseModel {
 
 	protected $table = 'companies';
 
+	protected $hidden = ['created_at', 'updated_at'];
+
 	public static $relationsData = [
 		'contact_person' => [self::BELONGS_TO, 'User', 'foreignKey' => 'contact_person_id'],
 		'jobs' => [self::HAS_MANY, 'Job', 'foreignKey' => 'company_id']

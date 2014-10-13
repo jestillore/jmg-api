@@ -5,18 +5,18 @@
 	<div class="col-lg-11 col-md-11">
 		<div class="row">
 			<div class="col-lg-8 col-md-4">
-				<span class="urgent middot-tabs {[job.category]}">&middot;</span> <a ui-sref="job({id: job.id})">{[job.rank.name]}</a>
+				<span class="middot-tabs {[job.category]}">&middot;</span> <a ui-sref="job({id: job.id})">{[job.rankName]}</a>
 			</div>
 			<div class="col-lg-4 col-md-4">
-				<span class="text-muted"><span class="glyphicon glyphicon-map-marker"></span> {[job.trade_route.name]}</span>
+				<span class="text-muted"><span class="glyphicon glyphicon-map-marker"></span> {[job.tradeRouteName]}</span>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-8 col-lg-8">
-				<span class="text-muted">#{[job.id]} Quantity: {[job.slots]} &middot; {[job.department.name]}</span>
+				<span class="text-muted">#{[job.id]} Quantity: {[job.slots]} &middot; {[job.departmentName]}</span>
 			</div>
 			<div class="col-lg-4 col-md-4">
-				<span class="text-muted">{[job.vessel.name]}</span>
+				<span class="text-muted">{[job.vesselName]}</span>
 			</div>
 		</div>
 		<hr />
