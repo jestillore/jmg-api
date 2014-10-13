@@ -36,7 +36,7 @@
 		            		<div class="btn-group">
 		            			@if(Auth::guest())
 		            			<a class="btn btn-primary" href="{{URL::to('login')}}">LOGIN</a>
-		            			<a class="btn btn-info" href="{{URL::to('signup')}}">SIGNUP</a>
+		            			<!-- <a class="btn btn-info" href="{{URL::to('signup')}}">SIGNUP</a> -->
 		            			@elseif(Auth::check())
 		            			<a class="btn btn-danger" href="{{URL::to('logout')}}">LOGOUT</a>
 		            			@endif
