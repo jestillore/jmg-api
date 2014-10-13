@@ -11,7 +11,7 @@
 					<img src="img/company-logo.png" />
 				</div>
 				<div class="col-md-11 col-lg-11">
-					<select ng-model="company" class="form-control">
+					<select required ng-model="company" class="form-control">
 						<option value="">- Select Company -</option>
 						<option ng-repeat="c in companies" value="{[c.id]}">{[c.name]}</option>
 					</select>
@@ -54,7 +54,7 @@
 				<div class="row">
 		            <div class="col-md-12 col-lg-12">
 		            	<div class="form-group">
-		            		<select ng-model="rank" class="form-control">
+		            		<select required ng-model="rank" class="form-control">
 		            			<option value="">- Select Rank -</option>
 		            			<option ng-repeat="r in ranks" value="{[r.id]}">{[r.name]}</option>
 		            		</select>
@@ -64,7 +64,7 @@
 				<div class="row">
 		            <div class="col-md-6 col-lg-6">
 		            	<div class="form-group">
-		            		<select ng-model="department" class="form-control">
+		            		<select required ng-model="department" class="form-control">
 		            			<option value="">- Select Department -</option>
 		            			<option ng-repeat="d in departments" value="{[d.id]}">{[d.name]}</option>
 		            		</select>
@@ -79,7 +79,7 @@
 				<div class="row">
 		            <div class="col-md-6 col-lg-6">
 		            	<div class="form-group">
-		            		<select ng-model="vessel" class="form-control">
+		            		<select required ng-model="vessel" class="form-control">
 		            			<option value="">- Select Vessel -</option>
 		            			<option ng-repeat="v in vessels" value="{[v.id]}">{[v.name]}</option>
 		            		</select>
@@ -87,7 +87,7 @@
 		            </div>
 		            <div class="col-md-6 col-lg-6">
 		            	<div class="form-group">
-		            		<select ng-model="vesselFlag" class="form-control">
+		            		<select required ng-model="vesselFlag" class="form-control">
 		            			<option value="">- Select Vessel Flag -</option>
 		            			<option ng-repeat="v in vesselFlags" value="{[v.id]}">{[v.name]}</option>
 		            		</select>
@@ -100,19 +100,19 @@
 		            		<div class="input-group">
 		                        <span class="input-group-addon">Post Start</span>
 		                        <div class="col-md-4 col-lg-4" style="padding: 0;">
-		                        	<select ng-model="startMonth" class="form-control">
+		                        	<select required ng-model="startMonth" class="form-control">
 		                        		<option value="">m</option>
 			                        	<option ng-repeat="month in months" value="{[$index + 1]}">{[month]}</option>
 			                        </select>
 		                        </div>
 		                        <div class="col-md-4 col-lg-4" style="padding: 0;">
-		                        	<select ng-model="startDate" class="form-control">
+		                        	<select required ng-model="startDate" class="form-control">
 		                        		<option value="">d</option>
 			                        	<option ng-repeat="date in dates" value="{[date]}">{[date]}</option>
 			                        </select>
 		                        </div>
 		                        <div class="col-md-4 col-lg-4" style="padding: 0;">
-		                        	<select ng-model="startYear" class="form-control">
+		                        	<select required ng-model="startYear" class="form-control">
 		                        		<option value="">y</option>
 			                        	<option ng-repeat="year in years" value="{[year]}">{[year]}</option>
 			                        </select>
@@ -125,19 +125,19 @@
 		            		<div class="input-group">
 		                        <span class="input-group-addon">Post End</span>
 		                        <div class="col-md-4 col-lg-4" style="padding: 0;">
-		                        	<select ng-model="endMonth" class="form-control">
+		                        	<select required ng-model="endMonth" class="form-control">
 		                        		<option value="">m</option>
 			                        	<option ng-repeat="m in months" value="{[$index + 1]}">{[m]}</option>
 			                        </select>
 		                        </div>
 		                        <div class="col-md-4 col-lg-4" style="padding: 0;">
-		                        	<select ng-model="endDate" class="form-control">
+		                        	<select required ng-model="endDate" class="form-control">
 		                        		<option value="">d</option>
 			                        	<option ng-repeat="date in dates" value="{[date]}">{[date]}</option>
 			                        </select>
 		                        </div>
 		                        <div class="col-md-4 col-lg-4" style="padding: 0;">
-		                        	<select ng-model="endYear" class="form-control">
+		                        	<select required ng-model="endYear" class="form-control">
 		                        		<option value="">y</option>
 			                        	<option ng-repeat="year in years" value="{[year]}">{[year]}</option>
 			                        </select>
@@ -149,7 +149,7 @@
 	            <div class="row">
 		            <div class="col-md-12 col-lg-12">
 		            	<div class="form-group">
-		            		<select ng-model="tradeRoute" class="form-control">
+		            		<select required ng-model="tradeRoute" class="form-control">
 		            			<option value="">- Select Trade Route -</option>
 		            			<option ng-repeat="t in tradeRoutes" value="{[t.id]}">{[t.name]}</option>
 		            		</select>
