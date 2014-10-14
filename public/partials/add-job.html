@@ -11,7 +11,7 @@
 					<img src="img/company-logo.png" />
 				</div>
 				<div class="col-md-11 col-lg-11">
-					<select required ng-model="company" class="form-control">
+					<select ng-model="company" class="form-control">
 						<option value="">- Select Company -</option>
 						<option ng-repeat="c in companies" value="{[c.id]}">{[c.name]}</option>
 					</select>
