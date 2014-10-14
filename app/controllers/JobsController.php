@@ -9,7 +9,7 @@ class JobsController extends \BaseController {
 	 */
 	public function index()
 	{
-		if(Auth::user()->hasRole('Company Owner')) {
+		if(!Auth::guest() && Auth::user()->hasRole('Company Owner')) {
 			$category = Input::get('category');
 			if($category) {
 				return Job::where('category', $category)->where('company_id', Auth::user()->company->id)->get();
