@@ -1,7 +1,7 @@
 function baseUrl(url) {
 	return 'http://localhost/jmg-api/public' + url;
 }
-var jmg = angular.module('JMG', ['ui.router', 'ngResource']);
+var jmg = angular.module('JMG', ['ui.router', 'ngResource', 'angularFileUpload']);
 jmg.config(['$stateProvider', '$urlRouterProvider', '$interpolateProvider', '$resourceProvider', function ($stateProvider, $urlRouterProvider, $interpolateProvider, $resourceProvider) {
 	// $resourceProvider.defaults.stripTrailingSlashes = false;
 	$interpolateProvider.startSymbol('{[').endSymbol(']}');
@@ -128,7 +128,7 @@ jmg.directive('jobs', function () {
 		templateUrl: 'templates/job-list.html'
 	};
 });
-jmg.controller('CompanyController', ['$scope', '$state', 'Companies', function ($scope, $state, Companies) {
+jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload', function ($scope, $state, Companies, $upload) {
 	function pad(num, size) {
 	    var s = '0' + num;
 	    return s.substr(s.length - size);
@@ -144,27 +144,71 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', function (
 		$scope.years.push(x);
 	}
 	$scope.addCompany = function () {
-		var company = new Companies({
-			name: $scope.name,
-			poea: $scope.poea,
-			validity: $scope.validityY + '-' + $scope.validityM + '-' + $scope.validityD,
-			address: $scope.address,
-			telephone: $scope.telephone,
-			fax: $scope.fax,
-			website: $scope.website,
-			cp_firstname: $scope.contactFirstname,
-			cp_lastname: $scope.contactLastname,
-			cp_designation: $scope.contactDesignation,
-			cp_email: $scope.contactEmail,
-			cp_telephone: $scope.contactTelephone,
-			cp_fax: $scope.contactFax
-		});
-		company.$save(function () {
-			console.log(company.id);
-			$state.go('companydone', {
-				id: company.id
-			});
-		});
+		// var company = new Companies({
+		// 	name: $scope.name,
+		// 	poea: $scope.poea,
+		// 	validity: $scope.validityY + '-' + $scope.validityM + '-' + $scope.validityD,
+		// 	address: $scope.address,
+		// 	telephone: $scope.telephone,
+		// 	fax: $scope.fax,
+		// 	website: $scope.website,
+		// 	cp_firstname: $scope.contactFirstname,
+		// 	cp_lastname: $scope.contactLastname,
+		// 	cp_designation: $scope.contactDesignation,
+		// 	cp_email: $scope.contactEmail,
+		// 	cp_telephone: $scope.contactTelephone,
+		// 	cp_fax: $scope.contactFax
+		// });
+		// company.$save(function () {
+		// 	console.log(company.id);
+		// 	$state.go('companydone', {
+		// 		id: company.id
+		// 	});
+		// });
+		$scope.upload = $upload.upload({
+	        url: baseUrl('/company'), //upload.php script, node.js route, or servlet url
+	        //method: 'POST' or 'PUT',
+	        //headers: {'header-key': 'header-value'},
+	        //withCredentials: true,
+	        data: {
+	        	one: 'uno'
+	        },
+	        file: '', // or list of files ($files) for html5 only
+	        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+	        // customize file formData name ('Content-Disposition'), server side file variable name. 
+	        //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+	        // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+	        //formDataAppender: function(formData, key, val){}
+	    }).progress(function(evt) {
+	    	console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+	    }).success(function(data, status, headers, config) {
+	        // file is uploaded successfully
+        	console.log(data);
+      	});
+	};
+
+	$scope.onFileSelect = function (files) {
+		$scope.file = files[0];
+		$scope.upload = $upload.upload({
+	        url: baseUrl('/test'), //upload.php script, node.js route, or servlet url
+	        //method: 'POST' or 'PUT',
+	        //headers: {'header-key': 'header-value'},
+	        //withCredentials: true,
+	        data: {
+	        	one: 'uno'
+	        },
+	        file: files[0], // or list of files ($files) for html5 only
+	        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
+	        // customize file formData name ('Content-Disposition'), server side file variable name. 
+	        //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
+	        // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
+	        //formDataAppender: function(formData, key, val){}
+	    }).progress(function(evt) {
+	    	console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+	    }).success(function(data, status, headers, config) {
+	        // file is uploaded successfully
+        	console.log(data);
+      	});
 	};
 }]);
 jmg.controller('JobsController', ['$scope', '$state', '$stateParams', 'Ranks', 'Departments', 'Vessels', 'Companies', 'VesselFlags', 'TradeRoutes', 'Jobs', function ($scope, $state, $stateParams, Ranks, Departments, Vessels, Companies, VesselFlags, TradeRoutes, Jobs) {
