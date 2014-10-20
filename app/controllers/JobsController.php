@@ -107,5 +107,11 @@ class JobsController extends \BaseController {
 		];
 	}
 
+	public function today() {
+		$date = date('Y-m-d');
+		$jobs = Job::where('post_start', $date)->get();
+		return $jobs;
+	}
+
 
 }
