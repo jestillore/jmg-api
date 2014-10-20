@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Asia/Manila',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -197,7 +197,7 @@ return array(
 		'Confide'    => 'Zizaco\Confide\Facade',
 		'Entrust'    => 'Zizaco\Entrust\EntrustFacade',
 		'Authorizer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
-		
+
 	),
 
 );
