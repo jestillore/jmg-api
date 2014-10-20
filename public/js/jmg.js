@@ -1,5 +1,5 @@
 function baseUrl(url) {
-	return 'http://localhost/jmg-api/public' + url;
+	return 'http://zoogtech.com/jmg/public' + url;
 }
 var jmg = angular.module('JMG', ['ui.router', 'ngResource', 'angularFileUpload']);
 jmg.config(['$stateProvider', '$urlRouterProvider', '$interpolateProvider', '$resourceProvider', function ($stateProvider, $urlRouterProvider, $interpolateProvider, $resourceProvider) {
