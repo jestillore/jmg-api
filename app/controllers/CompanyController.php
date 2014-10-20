@@ -51,6 +51,10 @@ class CompanyController extends \BaseController {
 		$contactPerson->attachRole($companyOwner);
 		$company->contact_person_id = $contactPerson->id;
 		$company->save();
+		$fileName = 'company-' . $company->id;
+		$file = Input::file('file');
+		$file->move(public_path() . '/logos/', $fileName . '.jpg');
+		Input::file('file')->move(public_path() . '/logos/', $fileName);
 		Mail::queue('emails.register', ['name' => $contactPerson->firstname, 'email' => $contactPerson->email, 'password' => $password, 'confirmationCode' => $contactPerson->confirmation_code], function ($message) {
 			$message->to(Input::get('cp_email'), Input::get('cp_firstname') . ' ' . Input::get('cp_lastname'))->subject('JMG Account');
 		});
