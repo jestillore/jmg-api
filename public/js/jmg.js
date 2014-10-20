@@ -145,19 +145,19 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
 	}
 	$scope.addCompany = function () {
 		// var company = new Companies({
-		// 	name: $scope.name,
-		// 	poea: $scope.poea,
-		// 	validity: $scope.validityY + '-' + $scope.validityM + '-' + $scope.validityD,
-		// 	address: $scope.address,
-		// 	telephone: $scope.telephone,
-		// 	fax: $scope.fax,
-		// 	website: $scope.website,
-		// 	cp_firstname: $scope.contactFirstname,
-		// 	cp_lastname: $scope.contactLastname,
-		// 	cp_designation: $scope.contactDesignation,
-		// 	cp_email: $scope.contactEmail,
-		// 	cp_telephone: $scope.contactTelephone,
-		// 	cp_fax: $scope.contactFax
+			// name: $scope.name,
+			// poea: $scope.poea,
+			// validity: $scope.validityY + '-' + $scope.validityM + '-' + $scope.validityD,
+			// address: $scope.address,
+			// telephone: $scope.telephone,
+			// fax: $scope.fax,
+			// website: $scope.website,
+			// cp_firstname: $scope.contactFirstname,
+			// cp_lastname: $scope.contactLastname,
+			// cp_designation: $scope.contactDesignation,
+			// cp_email: $scope.contactEmail,
+			// cp_telephone: $scope.contactTelephone,
+			// cp_fax: $scope.contactFax
 		// });
 		// company.$save(function () {
 		// 	console.log(company.id);
@@ -167,13 +167,25 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
 		// });
 		$scope.upload = $upload.upload({
 	        url: baseUrl('/company'), //upload.php script, node.js route, or servlet url
-	        //method: 'POST' or 'PUT',
+	        method: 'POST',
 	        //headers: {'header-key': 'header-value'},
 	        //withCredentials: true,
 	        data: {
-	        	one: 'uno'
+	        	name: $scope.name,
+				poea: $scope.poea,
+				validity: $scope.validityY + '-' + $scope.validityM + '-' + $scope.validityD,
+				address: $scope.address,
+				telephone: $scope.telephone,
+				fax: $scope.fax,
+				website: $scope.website,
+				cp_firstname: $scope.contactFirstname,
+				cp_lastname: $scope.contactLastname,
+				cp_designation: $scope.contactDesignation,
+				cp_email: $scope.contactEmail,
+				cp_telephone: $scope.contactTelephone,
+				cp_fax: $scope.contactFax
 	        },
-	        file: '', // or list of files ($files) for html5 only
+	        file: $scope.file, // or list of files ($files) for html5 only
 	        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
 	        // customize file formData name ('Content-Disposition'), server side file variable name. 
 	        //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
@@ -181,34 +193,15 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
 	        //formDataAppender: function(formData, key, val){}
 	    }).progress(function(evt) {
 	    	console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-	    }).success(function(data, status, headers, config) {
-	        // file is uploaded successfully
-        	console.log(data);
+	    }).success(function(company, status, headers, config) {
+        	$state.go('companydone', {
+				id: company.id
+			});
       	});
 	};
 
 	$scope.onFileSelect = function (files) {
 		$scope.file = files[0];
-		$scope.upload = $upload.upload({
-	        url: baseUrl('/test'), //upload.php script, node.js route, or servlet url
-	        //method: 'POST' or 'PUT',
-	        //headers: {'header-key': 'header-value'},
-	        //withCredentials: true,
-	        data: {
-	        	one: 'uno'
-	        },
-	        file: files[0], // or list of files ($files) for html5 only
-	        //fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
-	        // customize file formData name ('Content-Disposition'), server side file variable name. 
-	        //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
-	        // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
-	        //formDataAppender: function(formData, key, val){}
-	    }).progress(function(evt) {
-	    	console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-	    }).success(function(data, status, headers, config) {
-	        // file is uploaded successfully
-        	console.log(data);
-      	});
 	};
 }]);
 jmg.controller('JobsController', ['$scope', '$state', '$stateParams', 'Ranks', 'Departments', 'Vessels', 'Companies', 'VesselFlags', 'TradeRoutes', 'Jobs', function ($scope, $state, $stateParams, Ranks, Departments, Vessels, Companies, VesselFlags, TradeRoutes, Jobs) {

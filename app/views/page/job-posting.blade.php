@@ -32,9 +32,11 @@
 @stop
 
 @section('js')
+<script type="text/javascript" src="{{URL::to('js/angular-file-upload-shim.js')}}"></script>
 <script type="text/javascript" src="{{URL::to('js/angular.js')}}"></script>
 <script type="text/javascript" src="{{URL::to('js/angular-route.js')}}"></script>
 <script type="text/javascript" src="{{URL::to('js/angular-ui-router.js')}}"></script>
 <script type="text/javascript" src="{{URL::to('js/angular-resource.js')}}"></script>
+<script type="text/javascript" src="{{URL::to('js/angular-file-upload.js')}}"></script>
 <script type="text/javascript" src="{{URL::to('js/jmg.js')}}"></script>
 @stop
