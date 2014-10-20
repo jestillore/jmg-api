@@ -13,6 +13,7 @@ class Company extends BaseModel {
 
 	public function toArray() {
 		$this->load('contact_person');
+		$this->logo = URL::to('logos/company-') . $this->id . '.jpg';
 		return parent::toArray();
 	}
 
