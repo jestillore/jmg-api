@@ -42,6 +42,7 @@ class CompanyController extends \BaseController {
 		foreach($personFields as $field) {
 			$contactPerson->$field = array_get($input, 'cp_' . $field);
 		}
+		$contactPerson->username = $contactPerson->email;
 		$password = str_random(10);
 		$contactPerson->password = Hash::make($password);
 		$companyOwner = Role::where('name', 'Company Owner')->firstOrFail();
