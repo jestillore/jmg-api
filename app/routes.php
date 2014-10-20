@@ -27,16 +27,15 @@ Route::get('/', function() {
 // 	return View::make('page.contact')->with('active', 'contact');
 // });
 
-Route::post('oauth/access_token', function() {
-    return AuthorizationServer::performAccessTokenFlow();
-});
+Route::post('oauth/access_token', 'OAuthController@postAccessToken');
 
-//Route::group(['before' => 'oauth', 'prefix' => 'api'], function () {
+Route::group(['before' => 'oauth', 'prefix' => 'api'], function () {
 
 	Route::resource('company', 'CompanyController');
 	Route::resource('jobs', 'JobsController');
+	Route::get('notifications', 'JobsController@today');
 
-//});
+});
 
 Route::group(['before' => 'auth'], function () {
 
@@ -44,8 +43,8 @@ Route::group(['before' => 'auth'], function () {
 	Route::resource('vessels', 'VesselsController');
 	Route::resource('departments', 'DepartmentsController');
 
-	// Route::resource('company', 'CompanyController');
-	// Route::resource('jobs', 'JobsController');
+	Route::resource('company', 'CompanyController');
+	Route::resource('jobs', 'JobsController');
 
 	Route::resource('vessel-flags', 'VesselFlagsController');
 	Route::resource('trade-routes', 'TradeRoutesController');
@@ -74,11 +73,3 @@ Route::post('users/forgot_password', 'UsersController@doForgotPassword');
 Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
 Route::post('users/reset_password', 'UsersController@doResetPassword');
 Route::get('logout', 'UsersController@logout');
-
-
-Route::get('test', function () {
-	Mail::send('emails.register', ['name' => 'Jillberth', 'email' => 'ejillberth@gmail.com', 'password' => 'jfladskjf1234'], function ($message) {
-		$message->to('ejillberth@gmail.com', 'Jillberth Estillore')->subject('Test!');
-	});
-	return 'sent';
-});
