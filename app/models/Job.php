@@ -4,7 +4,7 @@ class Job extends BaseModel {
 
 	protected $table = 'jobs';
 
-	protected $hidden = ['updated_at', 'rank', 'vessel', 'vessel_flag', 'department', 'trade_route'];
+	protected $hidden = ['created_at', 'updated_at', 'rank', 'vessel', 'vessel_flag', 'department', 'trade_route'];
 
 	public static $relationsData = [
 		'company' => [self::BELONGS_TO, 'Company', 'foreignKey' => 'company_id'],
