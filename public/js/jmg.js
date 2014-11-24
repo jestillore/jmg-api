@@ -108,7 +108,7 @@ jmg.factory('Jobs', ['$resource', function ($resource) {
 			method: 'GET',
 			isArray: true,
 			params: {
-				category: 'deployment'
+				category: 'regular'
 			}
 		}
 	});
