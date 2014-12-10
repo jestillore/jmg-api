@@ -44,7 +44,7 @@ class CompanyController extends \BaseController {
 		}
 		$contactPerson->username = $contactPerson->email;
 		$password = str_random(10);
-		$contactPerson->password = Hash::make($password);
+		$contactPerson->password = $password;
 		$companyOwner = Role::where('name', 'Company Owner')->firstOrFail();
 		$contactPerson->role = $companyOwner->id;
 		$contactPerson->confirmation_code = str_random(30);
@@ -131,9 +131,13 @@ class CompanyController extends \BaseController {
 
 	public function sendMail($id) {
 		$company = Company::find($id);
+		return $company;
+		$password = $company->contact_person->password;
 		Mail::queue('emails.email', ['company' => $company->name, 'email' => $company->contact_person->email, 'password' => $password, 'confirmationCode' => $company->contact_person->confirmation_code], function ($message) {
 			$message->to($company->contact_person->email, $company->contact_person->firstname . ' ' . $company->contact_person->lastname)->subject('JMG Account');
 		});
+		$company->contact_person->password = Hash::make($company->contact_person->password);
+		$company->contact_person->save();
 	}
 
 
