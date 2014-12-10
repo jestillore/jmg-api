@@ -25,6 +25,7 @@ jmg.config(['$stateProvider', '$urlRouterProvider', '$interpolateProvider', '$re
 			$scope.company = Companies.get({
 				id: $stateParams.id
 			});
+			$.post(baseUrl('/company/send-mail/' + $stateParams.id));
 		}]
 	}).state('addjob', {
 		url: '/add-job/:companyId',

@@ -56,9 +56,9 @@ class CompanyController extends \BaseController {
 		$fileName = 'company-' . $company->id;
 		$file = Input::file('file');
 		$file->move(public_path() . '/logos/', $fileName . '.jpg');
-		Mail::queue('emails.email', ['company' => $company->name, 'email' => $contactPerson->email, 'password' => $password, 'confirmationCode' => $contactPerson->confirmation_code], function ($message) {
-			$message->to(Input::get('cp_email'), Input::get('cp_firstname') . ' ' . Input::get('cp_lastname'))->subject('JMG Account');
-		});
+		// Mail::queue('emails.email', ['company' => $company->name, 'email' => $contactPerson->email, 'password' => $password, 'confirmationCode' => $contactPerson->confirmation_code], function ($message) {
+		// 	$message->to(Input::get('cp_email'), Input::get('cp_firstname') . ' ' . Input::get('cp_lastname'))->subject('JMG Account');
+		// });
 		return $company;
 
 	}
@@ -127,6 +127,13 @@ class CompanyController extends \BaseController {
 		return [
 			'success' => true
 		];
+	}
+
+	public function sendMail($id) {
+		$company = Company::find($id);
+		Mail::queue('emails.email', ['company' => $company->name, 'email' => $company->contact_person->email, 'password' => $password, 'confirmationCode' => $company->contact_person->confirmation_code], function ($message) {
+			$message->to($company->contact_person->email, $company->contact_person->firstname . ' ' . $company->contact_person->lastname)->subject('JMG Account');
+		});
 	}
 
 

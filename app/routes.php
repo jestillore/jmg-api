@@ -30,7 +30,7 @@ Route::get('/', function() {
 Route::post('oauth/access_token', 'OAuthController@postAccessToken');
 
 //Route::group(['before' => 'oauth', 'prefix' => 'api'], function () {
-
+	Route::post('company/send-mail/{id}', 'CompanyController@sendMail');
 	Route::resource('company', 'CompanyController');
 	Route::resource('jobs', 'JobsController');
 	Route::get('notifications', 'JobsController@today');
