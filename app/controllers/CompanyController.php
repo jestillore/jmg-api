@@ -133,7 +133,7 @@ class CompanyController extends \BaseController {
 		$company = Company::find($id);
 		$contactPerson = User::find($company->contact_person_id); // it must be $company->contact_person but dunno why the hell it won't work
 		$password = $contactPerson->password;
-		Mail::queue('emails.email', ['company' => $company->name, 'email' => $contactPerson->email, 'password' => $password, 'confirmationCode' => $contactPerson->confirmation_code], function ($message) {
+		Mail::send('emails.email', ['company' => $company->name, 'email' => $contactPerson->email, 'password' => $password, 'confirmationCode' => $contactPerson->confirmation_code], function ($message) {
 			$message->to($contactPerson->email, $contactPerson->firstname . ' ' . $contactPerson->lastname)->subject('JMG Account');
 		});
 		$contactPerson->password = Hash::make($contactPerson->password);
