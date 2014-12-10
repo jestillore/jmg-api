@@ -1,7 +1,7 @@
 function baseUrl(url) {
 	return 'http://zoogtech.com/jmg/public' + url;
 }
-var jmg = angular.module('JMG', ['ui.router', 'ngResource', 'angularFileUpload']);
+var jmg = angular.module('JMG', ['ui.router', 'ngResource', 'angularFileUpload', 'ngLoadingSpinner']);
 jmg.config(['$stateProvider', '$urlRouterProvider', '$interpolateProvider', '$resourceProvider', function ($stateProvider, $urlRouterProvider, $interpolateProvider, $resourceProvider) {
 	// $resourceProvider.defaults.stripTrailingSlashes = false;
 	$interpolateProvider.startSymbol('{[').endSymbol(']}');
@@ -32,30 +32,93 @@ jmg.config(['$stateProvider', '$urlRouterProvider', '$interpolateProvider', '$re
 		controller: 'JobsController'
 	}).state('jobs', {
 		url: '/jobs',
-		templateUrl: 'partials/jobs.html'
+		templateUrl: 'partials/jobs.html',
+		controller: ['$scope', 'Ranks', 'Vessels', 'Companies', 'TradeRoutes', 'Jobs', function ($scope, Ranks, Vessels, Companies, TradeRoutes, Jobs) {
+			$scope.jobs = [];
+			$scope.ranks = Ranks.query();
+			$scope.vessels = Vessels.query();
+			$scope.companies = Companies.query();
+			$scope.tradeRoutes = TradeRoutes.query();
+			$scope.applyFilters = function () {
+				$scope.jobs = Jobs.query({
+					companyFilter: $scope.companyFilter,
+					vesselFilter: $scope.vesselFilter,
+					tradeRouteFilter: $scope.tradeRouteFilter,
+					rankFilter: $scope.rankFilter
+				})
+			};
+		}]
 	}).state('jobs.all', {
 		url: '/all',
 		templateUrl: 'partials/all-jobs.html',
 		controller: ['$scope', 'Jobs', function ($scope, Jobs) {
 			$scope.jobs = Jobs.query();
+			$scope.companyFilter = '';
+			$scope.vesselFilter = '';
+			$scope.tradeRouteFilter = '';
+			$scope.rankFilter = '';
+			$scope.applyFilters = function () {
+				$scope.jobs = Jobs.query({
+					companyFilter: $scope.companyFilter,
+					vesselFilter: $scope.vesselFilter,
+					tradeRouteFilter: $scope.tradeRouteFilter,
+					rankFilter: $scope.rankFilter
+				})
+			};
 		}]
 	}).state('jobs.urgent', {
 		url: '/urgent',
 		templateUrl: 'partials/all-jobs.html',
 		controller: ['$scope', 'Jobs', function ($scope, Jobs) {
 			$scope.jobs = Jobs.urgent();
+			$scope.companyFilter = '';
+			$scope.vesselFilter = '';
+			$scope.tradeRouteFilter = '';
+			$scope.rankFilter = '';
+			$scope.applyFilters = function () {
+				$scope.jobs = Jobs.urgent({
+					companyFilter: $scope.companyFilter,
+					vesselFilter: $scope.vesselFilter,
+					tradeRouteFilter: $scope.tradeRouteFilter,
+					rankFilter: $scope.rankFilter
+				})
+			};
 		}]
 	}).state('jobs.pooling', {
 		url: '/pooling',
 		templateUrl: 'partials/all-jobs.html',
 		controller: ['$scope', 'Jobs', function ($scope, Jobs) {
 			$scope.jobs = Jobs.pooling();
+			$scope.companyFilter = '';
+			$scope.vesselFilter = '';
+			$scope.tradeRouteFilter = '';
+			$scope.rankFilter = '';
+			$scope.applyFilters = function () {
+				$scope.jobs = Jobs.pooling({
+					companyFilter: $scope.companyFilter,
+					vesselFilter: $scope.vesselFilter,
+					tradeRouteFilter: $scope.tradeRouteFilter,
+					rankFilter: $scope.rankFilter
+				})
+			};
 		}]
 	}).state('jobs.deployment', {
 		url: '/deployment',
 		templateUrl: 'partials/all-jobs.html',
 		controller: ['$scope', 'Jobs', function ($scope, Jobs) {
 			$scope.jobs = Jobs.deployment();
+			$scope.companyFilter = '';
+			$scope.vesselFilter = '';
+			$scope.tradeRouteFilter = '';
+			$scope.rankFilter = '';
+			$scope.applyFilters = function () {
+				$scope.jobs = Jobs.deployment({
+					companyFilter: $scope.companyFilter,
+					vesselFilter: $scope.vesselFilter,
+					tradeRouteFilter: $scope.tradeRouteFilter,
+					rankFilter: $scope.rankFilter
+				})
+			};
 		}]
 	}).state('jobdone', {
 		url: '/jobdone/:id',
@@ -245,7 +308,7 @@ jmg.controller('JobsController', ['$scope', '$state', '$stateParams', 'Ranks', '
 			department_id: $scope.department,
 			vessel_id: $scope.vessel,
 			slots: $scope.slots,
-			vessel_flag_id: $scope.vesselFlag,
+			vessel_flag: $scope.vesselFlag,
 			post_start: $scope.startYear + '-' + $scope.startMonth + '-' + $scope.startDate,
 			post_end: $scope.endYear + '-' + $scope.endMonth + '-' + $scope.endDate,
 			trade_route_id: $scope.tradeRoute,

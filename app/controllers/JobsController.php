@@ -11,17 +11,33 @@ class JobsController extends \BaseController {
 	{
 		if(!Auth::guest() && Auth::user()->hasRole('Company Owner')) {
 			$category = Input::get('category');
+			$job = Job::where('company_id', '=', Auth::user()->company->id);
 			if($category) {
-				return Job::where('category', $category)->where('company_id', Auth::user()->company->id)->get();
+				$job->where('category', '=', $category)->get();
 			}
-			return Job::where('company_id', Auth::user()->company->id)->get();
+			$filters = ['rank_id' => 'rankFilter', 'vessel_id' => 'vesselFilter', 'trade_route_id' => 'tradeRouteFilter', 'company_id' => 'companyFilter'];
+			foreach($filters as $field => $filter) {
+				$f = Input::get($filter);
+				if($f) {
+					$job->where($field, '=', $f);
+				}
+			}
+			return $job->get();
 		}
 		else {
 			$category = Input::get('category');
-			if($category) {
-				return Job::where('category', $category)->get();
+			if($category)
+				$job = Job::where('category', '=', $category);
+			else 
+				$job = Job::where('category', 'like', '%');
+			$filters = ['rank_id' => 'rankFilter', 'vessel_id' => 'vesselFilter', 'trade_route_id' => 'tradeRouteFilter', 'company_id' => 'companyFilter'];
+			foreach($filters as $field => $filter) {
+				$f = Input::get($filter);
+				if($f) {
+					$job->where($field, '=', $f);
+				}
 			}
-			return Job::all();
+			return $job->get();
 		}
 	}
 
@@ -46,7 +62,7 @@ class JobsController extends \BaseController {
 	{
 		$input = Input::all();
 		$job = new Job;
-		$fields = ['company_id', 'category', 'rank_id', 'department_id', 'vessel_id', 'slots', 'vessel_flag_id', 'post_start', 'post_end', 'trade_route_id', 'description'];
+		$fields = ['company_id', 'category', 'rank_id', 'department_id', 'vessel_id', 'slots', 'vessel_flag', 'post_start', 'post_end', 'trade_route_id', 'description'];
 		foreach($fields as $field) {
 			$job->$field = array_get($input, $field);
 		}

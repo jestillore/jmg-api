@@ -1,1 +1,18 @@
+<select class="form-control col-lg-3 col-md-3" ng-model="rankFilter">
+	<option value="">All Ranks</option>
+	<option ng-repeat="rank in ranks" value={[rank.id]}>{[rank.name]}</option>
+</select><br />
+<select class="form-control col-lg-3 col-md-3" ng-model="vesselFilter">
+	<option value="">All Vessels</option>
+	<option ng-repeat="vessel in vessels" value={[vessel.id]}>{[vessel.name]}</option>
+</select><br />
+<select class="form-control col-lg-3 col-md-3" ng-model="tradeRouteFilter">
+	<option value="">All Trade Routes</option>
+	<option ng-repeat="tradeRoute in tradeRoutes" value={[tradeRoute.id]}>{[tradeRoute.name]}</option>
+</select><br />
+<select class="form-control col-lg-3 col-md-3" ng-model="companyFilter">
+	<option value="">All Companies</option>
+	<option ng-repeat="company in companies" value={[company.id]}>{[company.name]}</option>
+</select><br />
+<button class="btn btn-info" ng-click="applyFilters()">Apply Filters</button><br /><br />
 <jobs></jobs>

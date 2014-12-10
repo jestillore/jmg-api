@@ -23,9 +23,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'jmg',
-			'username'  => 'root',
-			'password'  => 'root',
+			'database'  => 'zoogtech_jmg',
+			'username'  => 'zoogtech_jmg',
+			'password'  => '(5.7[=Ay+Am7',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

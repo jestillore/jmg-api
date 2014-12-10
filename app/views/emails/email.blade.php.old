@@ -1,0 +1,128 @@
+<html>
+<head>
+	<title>Jobs Marino</title>
+</head>
+
+<style>
+	.wrapper{
+		width:100%;
+	}
+
+	.img{
+		width:100%;
+	}
+
+	.heading{
+		color:blue;
+		font-size:15px;
+		font-weight: bold;
+		margin-left: 20px;
+	}
+
+	.sub-head{
+		padding:20px;
+	}
+
+	li, .text{
+		color:blue;
+	}
+
+	.bold{
+		font-weight: bold;
+	}
+
+	.warn{
+		font-size: 20px;
+		font-weight: bold;
+		color:blue;
+		margin-left: 20px;
+	}
+
+	.account{
+		width:300px;
+		margin:0px auto;
+	}
+
+	.detail{
+		width: 400px;
+		margin:0px auto;
+		margin-top: 20px;
+		border-spacing: 15px;
+	}
+
+	.download{
+		font-size: 20px;
+		font-weight: bold;
+		color:blue;
+		text-align: center;
+	}
+
+	.play{
+		width:300px;
+		margin:0px auto;
+	}
+
+	.apps{
+		height:50px;
+		margin:0px auto;
+	}
+
+</style>
+
+<body>
+	<div class="wrapper">	
+		<div><img class="img" src="http://zoogtech.com/jmg/public/img/EmailConfirmation.jpg"/></div>
+		<div>
+			<h2 class="heading">Welcome Valued Client</h2>
+			<p class="sub-head text">Thank you for choosing <span class="bold">JOBS MARINO GO</span>, powered by the Joint Manning Group (JMG). This email is to confirm your availment of our services and the binding terms. Below are the general conditions in using this service:</p>
+			<ol>
+				<li>
+					<p class="text">Job Marino Go fully conforms with <span class="bold">Rule V-Advertisement for Maritime Employment of Part II - Licensing and Regulation</span> of the <span class="bold">POEA Rules and Regulations Governing the Recruitment and Employment of Seafarers</span>.</p>
+				</li>
+
+				<li>
+					<p class="text">The Advertiser certifies that the information contained in its job posting is authentic and that the prospective principal/s is/are duly accredited with POEA.</p>
+				</li>
+
+				<li>
+					<p class="text">The Advertiser shall not abuse the <span class="bold">Jobs Marino Go. </span>Therefore the Advertiser is strictly prohibited to post spam entried e.g. repetitive posting with same information within the perios of 1 hour.</p>
+				</li>
+
+				<li>
+					<p class="text">The Ad will be automatically remove from the App upon expiry of the job posts and/or Company Acccount as indicated in the signed Agreement.</p>
+				</li>
+
+				<li>
+					<p class="text">The Advertiser assumes liability for all contents published and assumes all risk and agrees to indemnify and hold Joint Manning Group (JMG) free and harmless for any and all suits, claims, liabilities of anh kind and damage that arise from the sponsorship and any additional marketing and promotions.</p>
+				</li>
+			</ol>
+
+			<h2 class="warn">THIS ACCOUNT SHALL BE ACTIVE FOR THREE (3) MONTHS UNTIL PRIOR NOTICE</h2>
+			<div>
+				<h4 class="account">YOUR ACCOUNT DETAILS</h4>
+				<table class="detail">
+					<tr>
+						<td>COMPANY: </td>
+						<td class="data">{{$company}}</td>
+					</tr>
+					<tr>
+						<td>USERNAME: </td>
+						<td class="data">{{$email}}</td>
+					</tr>
+					<tr>
+						<td>PASSWORD: </td>
+						<td class="data">{{$password}}</td>					
+					</tr>
+				</table>
+			</div>
+			<div><img class="img" src="http://zoogtech.com/jmg/public/img/EmailConfirmation(LOW).jpg"/></div>
+			<h2 class="download">DOWNLOAD JOBS MARINO GO & MARINO APP AVAILABLE ON</h2>	
+
+			<div class="play">
+				<img class="apps" src="http://zoogtech.com/jmg/public/img/google_play_logo.png"/>
+				<img class="apps" src="http://zoogtech.com/jmg/public/img/Apple_App_Store.png"/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

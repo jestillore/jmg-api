@@ -1,12 +1,10 @@
 <h4 class="text-primary"><b>Job Posting Registration</b></h4>
-<p>As part of the 1st Anniversary Celebration Treat of the Seafarer Center, I/We hereby agree to place online job postings in the Jobs Marino Go website for FREE according to the following arrangements:</p>
 <br />
 <form role="form" ng-submit="addJob()">
 	<div class="row" ng-show="superUser()">
 		<div class="col-md-12 col-lg-12">
 			<div class="form-group">
 				<h4>Select Company</h4>
-				<p>The quick brown fox jumps over the lazy dog.</p>
 				<div class="col-md-1 col-lg-1">
 					<img src="img/upload-logo.png" style="height: 40px" />
 				</div>
@@ -33,7 +31,7 @@
 				<div class="radio">
 				  	<label>
 				    	<input ng-model="category" type="radio" name="category" value="regular">
-				    	<span style="font-size: 15px;">Deployment</span> <span class="text-muted">(for deployment within a month, valid for one month)</span>
+				    	<span style="font-size: 15px;">Regular</span> <span class="text-muted">(for deployment within a month, valid for one month)</span>
 				  	</label>
 				</div>
 				<div class="radio">
@@ -49,7 +47,7 @@
 	<div class="row">
 		<div class="col-md-12 col-lg-12">
 			<div class="form-group">
-				<h4>Job Posting Format</h4>
+				<h4>Job Details</h4>
 				<p>Please provide the following basic information per job post</p>
 				<div class="row">
 		            <div class="col-md-12 col-lg-12">
@@ -87,10 +85,7 @@
 		            </div>
 		            <div class="col-md-6 col-lg-6">
 		            	<div class="form-group">
-		            		<select required ng-model="vesselFlag" class="form-control">
-		            			<option value="">- Select Vessel Flag -</option>
-		            			<option ng-repeat="v in vesselFlags" value="{[v.id]}">{[v.name]}</option>
-		            		</select>
+		            		<input class="form-control" required ng-model="vesselFlag" placeholder="Vessel Flag" />
 		            	</div>
 		            </div>
 	            </div>
