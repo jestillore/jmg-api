@@ -207,6 +207,7 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
 		$scope.years.push(x);
 	}
 	$scope.addCompany = function () {
+		$('#error-alerts').empty(); // clear error alerts
 		// var company = new Companies({
 			// name: $scope.name,
 			// poea: $scope.poea,
@@ -261,11 +262,21 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
         	$state.go('companydone', {
 				id: company.id
 			});
+      	}).error(function (data) {
+      		Object.keys(data).forEach(function(key) {
+		    data[key].forEach(function(error) {
+		        var $error = $('<div class="alert alert-danger" role="alert"></div>');
+		        $error.text(error);
+		        $('#error-alerts').append($error);
+		    });
+		});
+
       	});
 	};
 
 	$scope.onFileSelect = function (files) {
 		$scope.file = files[0];
+		$('#companyLogo').attr('src', URL.createObjectURL(files[0]));
 	};
 }]);
 jmg.controller('JobsController', ['$scope', '$state', '$stateParams', 'Ranks', 'Departments', 'Vessels', 'Companies', 'VesselFlags', 'TradeRoutes', 'Jobs', function ($scope, $state, $stateParams, Ranks, Departments, Vessels, Companies, VesselFlags, TradeRoutes, Jobs) {

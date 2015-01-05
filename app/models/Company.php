@@ -16,5 +16,10 @@ class Company extends BaseModel {
 		$this->logo = URL::to('logos/company-') . $this->id . '.jpg';
 		return parent::toArray();
 	}
+	
+	public static $rules = [
+		'name' => 'required|unique:companies',
+		'poea' => 'required|unique:companies'
+	];
 
 }

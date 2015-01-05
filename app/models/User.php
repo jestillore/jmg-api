@@ -6,7 +6,7 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Zizaco\Entrust\HasRole;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends BaseModel implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 	use HasRole; 
@@ -24,9 +24,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token', 'created_at', 'updated_at');
-
-	public function company() {
-		return $this->hasOne('Company', 'contact_person_id');
-	}
-
+	
+	public static $relationsData = [
+		'company' => [self::HAS_ONE, 'Company', 'foreignKey' => 'contact_person_id']
+	];
+	
+	public static $rules = [
+		'email' => 'required|unique:users'
+	];
 }

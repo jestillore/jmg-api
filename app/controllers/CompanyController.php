@@ -49,17 +49,19 @@ class CompanyController extends \BaseController {
 		$contactPerson->role = $companyOwner->id;
 		$contactPerson->confirmation_code = str_random(30);
 		$contactPerson->confirmed = true;
-		$contactPerson->save();
-		$contactPerson->attachRole($companyOwner);
-		$company->contact_person_id = $contactPerson->id;
-		$company->save();
-		$fileName = 'company-' . $company->id;
-		$file = Input::file('file');
-		$file->move(public_path() . '/logos/', $fileName . '.jpg');
-		// Mail::queue('emails.email', ['company' => $company->name, 'email' => $contactPerson->email, 'password' => $password, 'confirmationCode' => $contactPerson->confirmation_code], function ($message) {
-		// 	$message->to(Input::get('cp_email'), Input::get('cp_firstname') . ' ' . Input::get('cp_lastname'))->subject('JMG Account');
-		// });
-		return $company;
+		if($contactPerson->save()) {
+			$contactPerson->attachRole($companyOwner);
+			$company->contact_person_id = $contactPerson->id;
+			if($company->save()) {
+				$fileName = 'company-' . $company->id;
+				$file = Input::file('file');
+				$file->move(public_path() . '/logos/', $fileName . '.jpg');
+				return $company;
+			}
+			$contactPerson->delete();
+			return Response::make($company->errors(), 500);
+		}
+		return Response::make($contactPerson->errors(), 500);
 
 	}
 
