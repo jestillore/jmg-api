@@ -145,7 +145,7 @@ class CompanyController extends \BaseController {
 			$message->to($contactPerson->email, $contactPerson->firstname . ' ' . $contactPerson->lastname)->subject('JMG Account');
 		});
 		$contactPerson->password = Hash::make($contactPerson->password);
-		$contactPerson->save();
+		$contactPerson->updateUniques();
 	}
 
 
