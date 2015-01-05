@@ -48,11 +48,11 @@ class CompanyController extends \BaseController {
 		$companyOwner = Role::where('name', 'Company Owner')->firstOrFail();
 		$contactPerson->role = $companyOwner->id;
 		$contactPerson->confirmation_code = str_random(30);
+		$contactPerson->confirmed = true;
 		$contactPerson->save();
 		$contactPerson->attachRole($companyOwner);
 		$company->contact_person_id = $contactPerson->id;
 		$company->save();
-		$company->confirmed = true;
 		$fileName = 'company-' . $company->id;
 		$file = Input::file('file');
 		$file->move(public_path() . '/logos/', $fileName . '.jpg');

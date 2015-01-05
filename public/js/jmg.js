@@ -25,7 +25,6 @@ jmg.config(['$stateProvider', '$urlRouterProvider', '$interpolateProvider', '$re
 			$scope.company = Companies.get({
 				id: $stateParams.id
 			});
-			$.post(baseUrl('/company/send-mail/' + $stateParams.id));
 		}]
 	}).state('addjob', {
 		url: '/add-job/:companyId',
@@ -258,6 +257,7 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
 	    }).progress(function(evt) {
 	    	console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
 	    }).success(function(company, status, headers, config) {
+	    	$.post(baseUrl('/company/send-mail/' + company.id));
         	$state.go('companydone', {
 				id: company.id
 			});
