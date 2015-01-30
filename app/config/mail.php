@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'jmga746@gmail.com', 'name' => 'JMG Admin'),
+	'from' => array('address' => 'jobsmarinogomobileapplication@gmail.com', 'name' => 'JMG Admin'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'jmga746@gmail.com',
+	'username' => 'jobsmarinogomobileapplication@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'jmgpassword',
+	'password' => 'jobsmarinogoapp',
 
 	/*
 	|--------------------------------------------------------------------------
