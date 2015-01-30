@@ -34,12 +34,13 @@ Route::post('oauth/access_token', 'OAuthController@postAccessToken');
 	Route::resource('company', 'CompanyController');
 	Route::resource('jobs', 'JobsController');
 	Route::get('notifications', 'JobsController@today');
+	Route::resource('ranks', 'RanksController');
 
 //});
 
 Route::group(['before' => 'auth'], function () {
 
-	Route::resource('ranks', 'RanksController');
+	//Route::resource('ranks', 'RanksController');
 	Route::resource('vessels', 'VesselsController');
 	Route::resource('departments', 'DepartmentsController');
 

@@ -22,7 +22,7 @@ class JobsController extends \BaseController {
 					$job->where($field, '=', $f);
 				}
 			}
-			return $job->get();
+			return $job->orderBy('post_start', 'DESC')->get();
 		}
 		else {
 			$category = Input::get('category');
@@ -37,7 +37,7 @@ class JobsController extends \BaseController {
 					$job->where($field, '=', $f);
 				}
 			}
-			return $job->get();
+			return $job->orderBy('post_start', 'DESC')->get();
 		}
 	}
 
@@ -125,7 +125,7 @@ class JobsController extends \BaseController {
 
 	public function today() {
 		$date = date('Y-m-d');
-		$jobs = Job::where('post_start', $date)->get();
+		$jobs = Job::where('post_start', $date)->whereIn('rank_id', Input::get('ranks'))->get();
 		return $jobs;
 	}
 

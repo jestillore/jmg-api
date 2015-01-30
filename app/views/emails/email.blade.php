@@ -48,7 +48,7 @@
 						<td>{{$password}}</td>					
 					</tr>
 				</table>
-				<p>Please <a href="{{URL::to('users/confirm/' . $confirmationCode)}}" style="color: red;">Click Here</a> to confirm your account. Else, you will not be able to login.</p>
+				<center><p style="font-size: 25px;">Please <b><a href="{{URL::to('users/confirm/' . $confirmationCode)}}" style="color: red;">CLICK HERE</a></b> to confirm your account. Else, you will not be able to login.</p></center>
 			</div>
 			<div><img style="width:100%" src="http://zoogtech.com/jmg/public/img/EmailConfirmation(LOW).jpg"/></div>
 			<h2 style="font-size: 15px; font-family: Trebuchet_MS;color:green;text-align: center;">DOWNLOAD JOBS MARINO GO &amp; MARINO APP AVAILABLE ON</h2>	
