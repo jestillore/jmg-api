@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'jobsmarinogomobileapplication@gmail.com',
+	'username' => 'jmgapplication@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'jobsmarinogoapp',
+	'password' => 'jmgmobileapplication',
 
 	/*
 	|--------------------------------------------------------------------------
