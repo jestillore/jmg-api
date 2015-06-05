@@ -207,6 +207,10 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
 		$scope.years.push(x);
 	}
 	$scope.addCompany = function () {
+		if (!$scope.file || typeof $scope.file == 'undefined') {
+			alert('Logo is required.');
+			return;
+		}
 		$('#error-alerts').empty(); // clear error alerts
 		// var company = new Companies({
 			// name: $scope.name,

@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'jobsmarinogomobileapplication@gmail.com', 'name' => 'JMG Admin'),
+	'from' => array('address' => 'jmgapplication@gmail.com', 'name' => 'JMG Admin'),
 
 	/*
 	|--------------------------------------------------------------------------

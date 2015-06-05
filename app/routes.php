@@ -78,3 +78,13 @@ Route::get('logout', 'UsersController@logout');
 Route::get('test', function () {
 	return Hash::make('password');
 });
+
+
+Route::get('clear-data', function () {
+	DB::transaction(function () {
+		DB::delete('DELETE FROM users WHERE id NOT IN (1)');
+		DB::delete('DELETE FROM companies');
+		DB::delete('DELETE FROM jobs');
+	});
+	return 'crystal clear ;-)';
+});
