@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'jmgmobileapplication',
+	'password' => 'fffyiwuwnyeofiiz',
 
 	/*
 	|--------------------------------------------------------------------------
