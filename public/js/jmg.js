@@ -203,7 +203,7 @@ jmg.controller('CompanyController', ['$scope', '$state', 'Companies', '$upload',
 		$scope.dates.push(pad(x, 2));
 	}
 	var date = new Date();
-	for(var x = date.getFullYear(); x <= (date.getFullYear() + 5); x++) {
+	for(var x = date.getFullYear(); x <= (date.getFullYear() + 45); x++) {
 		$scope.years.push(x);
 	}
 	$scope.addCompany = function () {
